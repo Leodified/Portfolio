@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+
+    <style>
+        /* =======================
+           GLOBAL
+        ======================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: #0f0f0f;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* =======================
+           NAVBAR
+        ======================= */
+        nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(0, 234, 255, 0.15);
+            z-index: 1000;
+        }
+
+        nav h2 {
+            font-size: 24px;
+            letter-spacing: 1px;
+            color: #00eaff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00eaff;
+        }
+
+        /* =======================
+           HERO
+        ======================= */
+        #hero {
+            height: 100vh;
+            padding: 120px 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .hero-text {
+            max-width: 420px;
+        }
+
+        #hero h1 {
+            font-size: 52px;
+            margin-bottom: 10px;
+        }
+
+        #typed-text {
+            font-size: 22px;
+            color: #00eaff;
+            margin-top: 10px;
+            height: 30px;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 280px;
+            height: 360px;
+            object-fit: cover;
+            border-radius: 18px;
+            filter: grayscale(100%);
+            box-shadow: 0 20px 60px rgba(0, 234, 255, 0.25);
+            transition: 0.5s ease;
+        }
+
+        .hero-image::before {
+            content: "";
+            position: absolute;
+            inset: -8px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #00eaff, transparent);
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        .hero-image img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        /* =======================
+           ABOUT
+        ======================= */
+        #about {
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .about-box {
+            margin: 25px auto 0;
+            padding: 25px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            width: 60%;
+            line-height: 1.7;
+        }
+
+        /* =======================
+           SKILLS
+        ======================= */
+        #skills {
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .skill-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .skill-card {
+            width: 180px;
+            padding: 20px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            transition: 0.4s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(0, 234, 255, 0.12);
+        }
+
+        /* =======================
+           RESUME
+        ======================= */
+        #resume {
+            padding: 90px 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .resume-glass {
+            width: 65%;
+            padding: 40px;
+            text-align: center;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 234, 255, 0.08),
+                rgba(255, 255, 255, 0.03)
+            );
+            backdrop-filter: blur(12px);
+            border-radius: 18px;
+            border: 1px solid rgba(0, 234, 255, 0.25);
+        }
+
+        .resume-download {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 34px;
+            color: black;
+            background: #00eaff;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .resume-download:hover {
+            background: white;
+            transform: scale(1.08);
+        }
+
+        /* =======================
+           CONTACT
+        ======================= */
+        #contact {
+            padding: 90px 40px;
+            text-align: center;
+        }
+
+        .contact-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .contact-card {
+            width: 350px;
+            padding: 22px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 14px;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(0, 234, 255, 0.25);
+            transition: 0.35s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            background: rgba(0, 234, 255, 0.15);
+        }
+
+        /* =======================
+           FOOTER
+        ======================= */
+        footer {
+            padding: 25px;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.04);
+            border-top: 1px solid rgba(0,234,255,0.25);
+        }
+
+        footer span {
+            color: #00eaff;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <h2>My Portfolio</h2>
+    <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section id="hero">
+    <div class="hero-container">
+        <div class="hero-text">
+            <h1>Hello, I'm Solomon Nellore</h1>
+            <p id="typed-text"></p>
+        </div>
+
+        <div class="hero-image">
+            <img src="IMG-20240223-WA0029.jpg" alt="Solomon Nellore">
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <h2>About Me</h2>
+    <div class="about-box">
+        I am a passionate developer who loves building modern, clean, animated web experiences.
+        I focus on writing clean code, crafting UI, and continuously learning new technologies.
+    </div>
+</section>
+
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="skill-container">
+        <div class="skill-card">HTML</div>
+        <div class="skill-card">CSS</div>
+        <div class="skill-card">JavaScript</div>
+        <div class="skill-card">C++</div>
+        <div class="skill-card">Python</div>
+    </div>
+</section>
+
+<section id="resume">
+    <div class="resume-glass">
+        <h2>My Resume</h2>
+        <p>Download my resume to learn more about my background and skills.</p>
+        <a href="RESUME NEW.pdf" download class="resume-download">Download Resume</a>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Get In Touch</h2>
+    <div class="contact-cards">
+        <a href="mailto:nelloresolomonvr@gmail.com" class="contact-card">
+            Email<br><strong>nelloresolomonvr@gmail.com</strong>
+        </a>
+        <a href="tel:+916309514785" class="contact-card">
+            Phone<br><strong>+91 63095 14785</strong>
+        </a>
+    </div>
+</section>
+
+<footer>
+    © 2025 <span>Solomon Nellore</span> — Built with ❤️, code & creativity
+</footer>
+
+<script>
+    const text = ["Web Developer", "Programmer", "Tech Enthusiast"];
+    let i = 0, j = 0, isDeleting = false;
+    const typed = document.getElementById("typed-text");
+
+    function typeEffect() {
+        typed.textContent = text[i].substring(0, j);
+        if (!isDeleting && j++ === text[i].length) {
+            isDeleting = true;
+            setTimeout(typeEffect, 1200);
+            return;
+        }
+        if (isDeleting && j-- === 0) {
+            isDeleting = false;
+            i = (i + 1) % text.length;
+        }
+        setTimeout(typeEffect, isDeleting ? 70 : 120);
+    }
+    typeEffect();
+</script>
+
+</body>
+</html>
